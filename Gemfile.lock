@@ -35,6 +35,7 @@ GEM
     arel (5.0.1.20140414130214)
     awesome_nested_set (2.1.6)
       activerecord (>= 3.0.0)
+    bcrypt (3.1.7)
     bitters (0.10.0)
       bourbon (>= 3.2)
       sass (>= 3.2)
@@ -50,6 +51,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    devise (3.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.1)
     font-awesome-sass (4.1.0)
@@ -83,9 +91,13 @@ GEM
     omniauth-twitter (1.0.1)
       multi_json (~> 1.3)
       omniauth-oauth (~> 1.0)
+    orm_adapter (0.5.0)
+    pg (0.17.1)
     polyglot (0.3.5)
     puma (2.9.0)
       rack (>= 1.1, < 2.0)
+    quiet_assets (1.0.3)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -113,6 +125,22 @@ GEM
     rdoc (4.1.2)
       json (~> 1.4)
     refills (0.0.2)
+    rspec-core (3.1.2)
+      rspec-support (~> 3.1.0)
+    rspec-expectations (3.1.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.1.0)
+    rspec-mocks (3.1.0)
+      rspec-support (~> 3.1.0)
+    rspec-rails (3.1.0)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
+      rspec-support (~> 3.1.0)
+    rspec-support (3.1.0)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -151,6 +179,8 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -161,15 +191,19 @@ DEPENDENCIES
   bitters
   bourbon
   coffee-rails (~> 4.0.0)
+  devise
   font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
   neat
   omniauth-twitter
+  pg
   puma
+  quiet_assets
   rails (= 4.1.5)
   rails_12factor
   refills
+  rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   slim
