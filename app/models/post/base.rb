@@ -5,5 +5,7 @@ module Post
     validates :title, presence: true
     validates :user_id, presence: true
     validates :user, presence: true
+    acts_as_votable
+    acts_as_commentable
   end
 end

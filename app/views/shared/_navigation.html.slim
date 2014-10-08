@@ -1,6 +1,14 @@
-nav#main
-  ul
-    - if user_signed_in?
-      li= link_to 'Submit a Post', new_post_path
-    - else
-      li= link_to 'Log in', login_path
+.navigation-outer
+  nav#main
+    .brand
+      .icon= Rails.application.config.community_name.split(' ').map { |word| word.first(1) }.join
+      h1= Rails.application.config.community_name
+      h2= Rails.application.config.community_tagline
+    ul
+      - if user_signed_in?
+        li= link_to 'Log Out', logout_path, method: :delete
+      - else
+        li= link_to 'Log In', login_path
+      li= link_to 'About', new_post_path
+      li= link_to 'New Submission', new_post_path
+      li= link_to "More #{icon :'angle-down'}".html_safe, new_post_path

@@ -1,0 +1,16 @@
+= form_for @post, as: :post, url: @post.new_record? ? posts_path : post_path(@post) do |f|
+  - if @post.errors.any?
+    #error_explanation
+      h4
+        => pluralize(@post.errors.count, "error")
+        | prohibited this post from being saved:
+
+      ul
+        - @post.errors.full_messages.each do |message|
+          li= message
+
+  = f.text_field :title, placeholder: 'Name Your Post'
+  = f.text_field :url, placeholder: 'URL'
+  = f.text_field :description, placeholder: 'Tell us about it...'
+  br
+  = f.submit 'Post it!'

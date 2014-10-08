@@ -10,10 +10,129 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
+@import 'bourbon';
+@import 'base/base';
+@import 'neat';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
 *, html, body {
-  font-family: "proxima-nova", 'Helvetica Neue', sans-serif;
+  font-family: 'proxima-nova', 'Helvetica Neue', sans-serif;
+}
+
+li.post {
+  .submission, .view-discussion {
+    margin-bottom: 18px;
+  }
+  .submission {
+    @include span-columns(9);
+  }
+  .view-discussion {
+    @include span-columns(3);
+    text-align: right;
+    line-height: 48px;
+    .comment-count { margin-left: 12px; }
+    color: #888;
+  }
+  .post-url.title {
+    font-weight: bold;
+    color: #da552f;
+    display: block;
+  }
+  .description {
+    color: #888;
+  }
+  .upvote {
+    border-radius: 4px;
+    background-color: #eee;
+    float: left;
+    text-align: center;
+    width: 45px;
+    color: #888;
+    margin-right: 12px;
+  }
+}
+
+textarea,
+input[type="email"], input[type="number"], input[type="password"],
+input[type="search"], input[type="tel"], input[type="text"],
+input[type="url"], input[type="color"], input[type="date"],
+input[type="datetime"], input[type="datetime-local"],
+input[type="month"], input[type="time"], input[type="week"],
+select[multiple=multiple] {
+  font-family: 'proxima-nova', 'Helvetica Neue', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #534540;
+  font-family: 'proxima-nova', 'Helvetica Neue', sans-serif;
+}
+
+h3 {
+  text-transform: uppercase;
+  font-size: 26px;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+section {
+  @include outer-container;
+  margin-top: 2.0em;
+}
+
+.navigation-outer {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  nav#main {
+    @include outer-container;
+    padding: 8px;
+    ul {
+      text-align: right;
+      @include span-columns(6);
+      li {
+        padding-left: 18px;
+        line-height: 43px;
+        display: inline;
+        list-style-type: none;
+      }
+    }
+    .brand {
+      @include span-columns(6);
+      .icon {
+        float: left; height: 43px;
+        background-color: #da552f;
+        border-radius: 43px;
+        line-height: 43px;
+        width: 43px;
+        color: #fff;
+        font-size: 1.4em;
+        text-align: center;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+      h1, h2 {
+        margin: 0px;
+        padding: 0px;
+        line-height: 22px;
+      }
+      h1 {
+        font-weight: bold;
+        color: #da552f;
+        font-size: 20px;
+        margin-top: -1px;
+      }
+      h2 {
+        color: #999999;
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+  }
 }

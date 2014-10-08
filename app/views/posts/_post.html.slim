@@ -1,0 +1,12 @@
+li.post
+  .submission
+    .upvote
+      = link_to icon(:'caret-up'), upvote_post_path(post), method: :post, class: 'upvote-link'
+      .vote-count= post.votes_for.size
+    .url
+      = link_to post.title, outbound_post_path(post), target: '_blank', class: 'post-url title'
+      span.description= post.description
+  .view-discussion
+    = link_to post_comments_path(post) do
+      = icon :comment
+      span.comment-count= rand(385)

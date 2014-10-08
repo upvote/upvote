@@ -1,3 +1,19 @@
+GIT
+  remote: git://github.com/collectiveidea/awesome_nested_set.git
+  revision: f97296450fd07013904b4ebcc41dbee6f3beda73
+  specs:
+    awesome_nested_set (3.0.1)
+      activerecord (>= 4.0.0, < 5)
+
+GIT
+  remote: git://github.com/elight/acts_as_commentable_with_threading.git
+  revision: e699125d58f6ecc62b69b1e2770ede04b15f7cd3
+  specs:
+    acts_as_commentable_with_threading (2.0.0)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
+      awesome_nested_set (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -27,16 +43,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
-    acts_as_commentable_with_threading (1.2.0)
-      activerecord (>= 3.0)
-      activesupport (>= 3.0)
-      awesome_nested_set (>= 2.0)
     acts_as_votable (0.10.0)
     arel (5.0.1.20140414130214)
-    awesome_nested_set (2.1.6)
-      activerecord (>= 3.0.0)
     bcrypt (3.1.7)
-    bitters (0.10.0)
+    bitters (0.10.1)
       bourbon (>= 3.2)
       sass (>= 3.2)
       thor
@@ -60,7 +70,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.1)
-    font-awesome-sass (4.1.0)
+    font-awesome-sass (4.2.0)
       sass (~> 3.2)
     hashie (3.3.1)
     hike (1.2.3)
@@ -186,13 +196,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_commentable_with_threading
+  acts_as_commentable_with_threading!
   acts_as_votable
+  awesome_nested_set!
   bitters
   bourbon
   coffee-rails (~> 4.0.0)
   devise
-  font-awesome-sass
+  font-awesome-sass (~> 4.2.0)
   jbuilder (~> 2.0)
   jquery-rails
   neat

@@ -1,0 +1,12 @@
+ul= render 'posts/post', post: @post
+
+h5= pluralize @post.votes_for.size, 'upvote'
+
+h5= pluralize @comments.count, 'comment'
+
+- @comments.each do |comment|
+  p= comment.body
+
+= form_for Comment.new, url: post_comments_path(@post) do |f|
+  = f.text_area :body, placeholder: 'Get in on this...'
+  = f.submit

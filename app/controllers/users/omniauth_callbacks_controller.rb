@@ -1,5 +1,10 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
+  def log_out
+    reset_session
+    redirect_to root_path, notice: 'You have successfully logged out.'
+  end
+
   def self.provides_callback_for(provider)
     class_eval %Q{
       def #{provider}
