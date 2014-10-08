@@ -19,6 +19,29 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+article {
+  padding-top: 4.5em;
+}
+
+header {
+  background-color: #fff;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+.headroom {
+    transition: transform 200ms linear;
+}
+.headroom--pinned {
+    transform: translateY(0%);
+}
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
 *, html, body {
   font-family: 'proxima-nova', 'Helvetica Neue', sans-serif;
 }
@@ -67,13 +90,9 @@ select[multiple=multiple] {
 }
 
 h1, h2, h3, h4, h5 {
-  color: #534540;
-  font-family: 'proxima-nova', 'Helvetica Neue', sans-serif;
-}
-
-h3 {
+  color: #888;
   text-transform: uppercase;
-  font-size: 26px;
+  font-family: 'proxima-nova', 'Helvetica Neue', sans-serif;
 }
 
 html, body {
@@ -118,6 +137,7 @@ section {
         margin-right: 8px;
       }
       h1, h2 {
+        text-transform: none;
         margin: 0px;
         padding: 0px;
         line-height: 22px;

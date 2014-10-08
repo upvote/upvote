@@ -14,4 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require typekit
-//= require_tree .
+//= require vendor/headroom.min
+
+(new Headroom(document.querySelector('header'))).init();

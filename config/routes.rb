@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get '/terms-of-service' => 'pages#terms_of_service'
   get '/privacy-policy'   => 'pages#privacy_policy'
+  get '/about'            => 'pages#about'
 
   root to: 'posts#index'
 end

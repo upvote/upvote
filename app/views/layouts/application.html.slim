@@ -1,14 +1,15 @@
 doctype html
 html
   head
-    title Upvote
+    title= "#{t :'community.name'} - #{yield(:title) || t(:'community.tagline')}"
     = typekit 'ack7hno'
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    = render 'shared/navigation'
-    p.notice= notice
-    p.alert= alert
-    section= yield
+    header= render 'shared/navigation'
+    article
+      p.notice= notice
+      p.alert= alert
+      section= yield
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = yield :bottom
