@@ -1,9 +1,9 @@
 li.post
   .submission
     = link_to upvote_post_path(post), method: :post do
-    .upvote
-      span.upvote-link= icon(:'caret-up')
-      .vote-count= post.votes_for.size
+      .upvote
+        span.upvote-link= icon(:'caret-up')
+        .vote-count= post.votes_for.size
     .url
       = link_to post.title, outbound_post_path(post), target: '_blank', class: 'post-url title'
       span.description= post.description
