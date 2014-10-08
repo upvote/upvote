@@ -1,8 +1,7 @@
-<%= form_for(@post) do |f| %>
+<%= form_for @post, as: :post, url: @post.new_record? ? posts_path : post_path(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% @post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -24,6 +23,6 @@
     <%= f.text_field :url %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Submit Post!' %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 nav#main
   ul
     - if user_signed_in?
-      li= link_to 'Submit a Post', new_posts_path
+      li= link_to 'Submit a Post', new_post_path
     - else
       li= link_to 'Log in', login_path
