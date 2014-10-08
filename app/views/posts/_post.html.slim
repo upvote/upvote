@@ -9,4 +9,5 @@ li.post
   .view-discussion
     = link_to post_comments_path(post) do
       = icon :comment
-      span.comment-count= rand(385)
+      span.comment-count
+        = post.comment_threads.count
