@@ -7,6 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :last_sign_in_at
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
+      t.text :meta
       t.timestamps
     end
     add_index :users, :email, unique: true

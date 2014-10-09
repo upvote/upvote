@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+
   devise :trackable, :omniauthable, :omniauth_providers => [ :twitter ]
 
   has_many :authorizations
@@ -7,12 +9,22 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_REGEX = /\Achange@me/
 
   validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
-  validates :note, presence: true, on: :update
+  validates :headline, presence: true, on: :update
+  validates :name, presence: true
+
+  serialize :meta, JSON
 
   acts_as_voter
 
-  def self.find_for_oauth(auth, signed_in_resource = nil)
+  friendly_id :name, use: :slugged
 
+  def twitter_handle
+    "@#{authorizations.where(provider:'twitter').first.handle}"
+  rescue
+    nil
+  end
+
+  def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
     identity = Authorization.find_for_oauth(auth)
 
@@ -24,7 +36,6 @@ class User < ActiveRecord::Base
 
     # Create the user if needed
     if user.nil?
-
       # Get the existing user by email if the provider gives us a verified email.
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
@@ -34,8 +45,14 @@ class User < ActiveRecord::Base
 
       # Create the user if it's a new registration
       if user.nil?
-        user = User.new(email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com")
-        # name: auth.extra.raw_info.name
+        user_attrs = {
+          name: auth.extra.raw_info.name,
+          avatar: auth.extra.raw_info.profile_image_url_https, # use secure URLs
+          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+          meta: auth.extra.raw_info.to_h
+        }
+
+        user = User.new(user_attrs)
         # user.skip_confirmation!
         user.save!
       end

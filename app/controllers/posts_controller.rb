@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to post_path(@post), notice: 'Post was successfully created.' }
+        format.html { redirect_to post_comments_path(@post), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: post_path(@post) }
       else
         format.html { render :new }
@@ -55,8 +55,8 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to post_path(@post), notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: post_path(@post) }
+        format.html { redirect_to post_comments_path(@post), notice: 'Post was successfully updated.' }
+        format.json { render :show, status: :ok, location: post_comments_path(@post) }
       else
         format.html { render :edit }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post::Base.find(params[:id])
+      @post = Post::Base.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

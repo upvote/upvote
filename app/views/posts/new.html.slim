@@ -1,5 +1,6 @@
-h3 Submit Something New
-p Did you find something ridiculously cool on the internet? Post it!
-br
-= render 'form'
-= link_to 'Back', posts_path
+section.new-post
+  h3 Submit Something New
+  p Did you find something ridiculously cool on the internet? Post it!
+  br
+  = render 'form'
+  = link_to 'Back', posts_path unless request.xhr?

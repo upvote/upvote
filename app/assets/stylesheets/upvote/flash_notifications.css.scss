@@ -1,0 +1,19 @@
+section.flash {
+  .close {
+    opacity: 0.5;
+    float: right; font-size: 2.0em; line-height: 36px; cursor: pointer; cursor: hand; margin-top: 4px;
+  }
+  border-radius: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+  line-height: 40px;
+  font-size: 1.1em;
+  &.notice {
+    color: #27ae60;
+    background-color: lighten(#27ae60,40);
+  }
+  &.alert {
+    color: #e74c3c;
+    background-color: lighten(#e74c3c,40);
+  }
+}

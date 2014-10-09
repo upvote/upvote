@@ -1,12 +1,20 @@
-ul= render 'posts/post', post: @post
+section.author
+  => "Posted by #{@post.user.name}"
+  | about
+  span.post-age=< "#{distance_of_time_in_words_to_now @post.created_at} ago"
 
-h5= pluralize @post.votes_for.size, 'upvote'
+section.post-details
+  ul= render 'posts/post', post: @post
 
-h5= pluralize @comments.count, 'comment'
+section.upvotes
+  h5= pluralize @post.votes_for.size, 'upvote'
+  - if @post.votes_for.size == 0
+    p.no-votes No love for this post (yet).
 
-- @comments.each do |comment|
-  p= comment.body
 
-= form_for Comment.new, url: post_comments_path(@post) do |f|
-  = f.text_area :body, placeholder: 'Get in on this...'
-  = f.submit
+section.comments
+  h5= pluralize @comments.count, 'comment'
+  - @comments.each do |comment|
+    = render 'comments/comment', comment: comment
+
+section.comment-form= render 'comments/form'

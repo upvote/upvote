@@ -11,5 +11,5 @@
       - else
         li= link_to 'Log In', login_path
       li= link_to 'About', about_path
-      li= link_to 'New Submission', new_post_path
+      li= link_to 'New Submission', new_post_path, data: { secondary: true }
       li= link_to "More #{icon :'angle-down'}".html_safe, new_post_path

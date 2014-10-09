@@ -1,0 +1,32 @@
+li.post {
+  .submission, .view-discussion {
+    margin-bottom: 18px;
+  }
+  .submission {
+    @include span-columns(9);
+  }
+  .view-discussion {
+    @include span-columns(3);
+    text-align: right;
+    line-height: 48px;
+    .comment-count { margin-left: 12px; }
+    color: #888;
+  }
+  .post-url.title {
+    font-weight: bold;
+    color: #da552f;
+    display: block;
+  }
+  .description {
+    color: #888;
+  }
+  .upvote {
+    border-radius: 4px;
+    background-color: #eee;
+    float: left;
+    text-align: center;
+    width: 45px;
+    color: #888;
+    margin-right: 12px;
+  }
+}

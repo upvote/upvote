@@ -1,0 +1,50 @@
+// .comment
+//   .comment-author
+//     = link_to submitted_user_posts_path(comment.user) do
+//       = image_tag 'https://pbs.twimg.com/profile_images/513320254840516608/EJv_7GVy_normal.jpeg', height: 40, width: 40
+//        h2.comment-user-name= comment.user.
+//       = link_to  comment.user.name, submitted_user_posts_path(comment.user)
+//     .coment-user-info
+//       small.user-handled @shadowr
+//   .comment-body= comment.body
+
+$comment-author-gutter-size: 50px;
+$comment-author-avatar-size: 40px;
+
+.comment {
+  margin-bottom: 18px;
+  .comment-body {
+    font-size: 0.9em;
+    color: #222;
+  }
+  .comment-body,
+  .comment-author .info-wrapper {
+    margin-left: $comment-author-gutter-size;
+  }
+  a.comment-author {
+    h2, small {
+      display: block;
+    }
+    small {
+      color: #888;
+      .age {
+        display: inline;
+        color: #ccc;
+      }
+    }
+    h2 {
+      color: #da552f;
+      font-size: 1.0em;
+      line-height: normal;
+      text-transform: none;
+    }
+    img {
+      margin-top: 2px;
+      float: left;
+      left: 0;
+      width: $comment-author-avatar-size;
+      height: $comment-author-avatar-size;
+      border-radius: $comment-author-avatar-size;
+    }
+  }
+}

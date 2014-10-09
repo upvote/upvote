@@ -1,0 +1,3 @@
+= form_for Comment.new, url: post_comments_path(@post) do |f|
+  = f.text_area :body, placeholder: 'Get in on this...'
+  = f.submit

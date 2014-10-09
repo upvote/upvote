@@ -1,0 +1,110 @@
+@-webkit-keyframes slide {
+  100% { right: 0; }
+}
+
+@keyframes slide {
+  100% { right: 0; }
+}
+
+article.whiteout {
+  &.hidden { display: none; }
+  z-index: 90;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.75);
+}
+
+.secondary-content {
+  section {
+    &:first-child { margin-top: 0px; }
+    &.author, &.post-details {
+      background-color: #FDF7E8;
+    }
+    &.upvotes, &.post-details {
+      margin-bottom: 18px;
+    }
+    &.comments {
+      h5 {
+        padding-bottom: 4px;
+        border-bottom: 2px solid #eee;
+        margin-bottom: 18px;
+      }
+    }
+    &.upvotes {
+      .no-votes {
+        margin-top: 9px;
+        color: #aaa;
+        font-size: 0.9em;
+      }
+    }
+    &.new-post, &.post-details {
+      padding-top: 18px;
+    }
+    &.post-details {
+      .view-discussion { display: none; }
+    }
+    &.author {
+      padding-top: 9px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid darken(#FDF7E8,5);
+      font-size: 0.9em;
+      color: #888;
+      span.post-age { text-decoration: underline; }
+    }
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  &.hidden { display: none; }
+  .loading {
+    padding: 2em;
+    color: #ccc;
+    font-size: 1.2em;
+    text-align: center;
+  }
+  &.sliding-in {
+    -webkit-animation: slide 0.25s forwards;
+    -webkit-animation-delay: 0s;
+    animation: slide 0.25s forwards;
+    animation-delay: 0s;
+  }
+  -webkit-background-clip: border-box;
+  -webkit-background-origin: padding-box;
+  -webkit-background-size: auto;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.247059) 0px 0px 20px 0px;
+  -webkit-transition-delay: 0s, 0s;
+  -webkit-transition-duration: 0s, 0.2s;
+  -webkit-transition-property: all, all;
+  -webkit-transition-timing-function: ease, ease;
+  background-attachment: scroll;
+  background-clip: border-box;
+  background-color: rgb(255, 255, 255);
+  background-image: none;
+  background-origin: padding-box;
+  background-size: auto;
+  border-left-color: rgba(0, 0, 0, 0.0980392);
+  border-left-style: solid;
+  border-left-width: 1px;
+  bottom: 0px;
+  box-shadow: rgba(0, 0, 0, 0.247059) 0px 0px 20px 0px;
+  display: block;
+  font-family: proxima-nova, 'Proxima Nova', sans-serif;
+  height: 100%;
+  opacity: 1;
+  overflow-y: scroll;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  position: fixed;
+  right: -700px;
+  top: 0px;
+  transition-delay: 0s, 0s;
+  transition-duration: 0s, 0.2s;
+  transition-property: all, all;
+  transition-timing-function: ease, ease;
+  width: 700px;
+  z-index: 100;
+}

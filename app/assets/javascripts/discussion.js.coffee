@@ -1,17 +1,32 @@
 loadingHTML = "<div class='loading'>Loading...</div>"
+errorHTML = "<div class='loading'>D'oh, we couldn't find that.</div>"
+
+openURLInPanel = (urlOrPath) ->
+  window.location.hash = "#!#{urlOrPath}"
+  $('.secondary-content').html loadingHTML
+  $('.secondary-content').addClass 'sliding-in'
+  $.ajax(urlOrPath).success((data) ->
+    $('.whiteout').show()
+    $('.secondary-content').html data.responseText
+  ).error((data) ->
+    $('.whiteout').show()
+    $('.secondary-content').html errorHTML
+  ).complete((data) ->
+    $('.whiteout').show()
+    $('.secondary-content').html data.responseText
+  )
 
 $ ->
   $('.secondary-content').html loadingHTML
 
-$('.whiteout').click ->
-  $('.secondary-content').html loadingHTML
-  $('.whiteout').hide()
-  $('.secondary-content').removeClass 'sliding-in'
+  if document.location.hash.substr(0,2) == '#!'
+    openURLInPanel document.location.hash.substr(2)
 
-$('.view-discussion > a').click (e) ->
-  $('.secondary-content').html loadingHTML
-  $('.secondary-content').addClass 'sliding-in'
-  e.preventDefault()
-  $.ajax($(this).attr('href')).complete (data) ->
-    $('.whiteout').show()
-    $('.secondary-content').html data.responseText
+  $('.whiteout').click ->
+    $('.secondary-content').html loadingHTML
+    $('.whiteout').hide()
+    $('.secondary-content').removeClass 'sliding-in'
+
+  $('.view-discussion > a,a[data-secondary]').click (e) ->
+    e.preventDefault()
+    openURLInPanel $(this).attr('href')

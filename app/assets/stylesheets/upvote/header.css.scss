@@ -1,0 +1,72 @@
+.navigation-outer {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  nav#main {
+    @include outer-container;
+    padding: 8px;
+    ul {
+      text-align: right;
+      @include span-columns(6);
+      li {
+        padding-left: 18px;
+        line-height: 43px;
+        display: inline;
+        list-style-type: none;
+      }
+    }
+    .brand {
+      @include span-columns(6);
+      .icon {
+        float: left; height: 43px;
+        background-color: #da552f;
+        border-radius: 43px;
+        line-height: 43px;
+        width: 43px;
+        color: #fff;
+        font-size: 1.4em;
+        text-align: center;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+      h1, h2 {
+        text-transform: none;
+        margin: 0px;
+        padding: 0px;
+        line-height: 22px;
+      }
+      h1 {
+        font-weight: 800;
+        color: #da552f;
+        font-size: 20px;
+        margin-top: -1px;
+      }
+      h2 {
+        color: #999999;
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+header {
+  background-color: #fff;
+  position: fixed;
+  z-index: 10;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+.headroom {
+    transition: transform 200ms linear;
+}
+
+.headroom--pinned {
+    transform: translateY(0%);
+}
+
+.headroom--unpinned {
+    transform: translateY(-100%);
+}

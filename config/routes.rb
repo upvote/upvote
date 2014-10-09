@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     delete '/logout' => 'users/omniauth_callbacks#log_out'
   end
 
-  resources :posts do
+  resources :posts, only: [ :new, :create, :index ] do
     member do
       post :upvote
       get :outbound
@@ -13,11 +13,18 @@ Rails.application.routes.draw do
     resources :comments, path: 'discussion', only: [ :index, :create ]
   end
 
-  resources :users do
+  resource :user, as: :account, path: :account, only: [ :edit, :update ]
+
+  resources :users, only: [] do
     member do
       match :finish_signup, via: [ :get, :patch ]
     end
-    resources :posts
+    resources :posts, only: [] do
+      collection do
+        get '/submitted' => 'posts#submitted_by_user'
+        get '/liked' => 'posts#liked_by_user'
+      end
+    end
   end
 
   get '/terms-of-service' => 'pages#terms_of_service'

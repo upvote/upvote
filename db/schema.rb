@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008215252) do
+ActiveRecord::Schema.define(version: 20141009033453) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "user_id",    null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141008215252) do
     t.text     "meta"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "handle"
   end
 
   add_index "authorizations", ["provider", "uid"], name: "index_authorizations_on_provider_and_uid", unique: true
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20141008215252) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
@@ -61,9 +63,13 @@ ActiveRecord::Schema.define(version: 20141008215252) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.text     "meta"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "note",               default: "", null: false
+    t.string   "headline",           default: "", null: false
+    t.string   "name",               default: "", null: false
+    t.string   "slug"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

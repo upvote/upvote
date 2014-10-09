@@ -1,0 +1,21 @@
+.center.complete-signup
+  br
+  br
+  h1= "Welcome to #{t :'community.name'}"
+  br
+  p This humble piece of internet was created for people like you
+  p To geek out and discover new, interesting stuff
+  p So without further ado, welcome to the club, and happy upvoting :)
+  br
+  br
+  p Tell us a bit about yourself, then you can join the hunt!
+  br
+  = form_for current_user, as: 'user', url: finish_signup_user_path(current_user), html: { role: 'form'} do |f|
+    - if @show_errors && current_user.errors.any?
+      #error_explanation
+        - current_user.errors.full_messages.each do |msg|
+          = msg
+          br
+    = f.text_field :email, autofocus: true, value: '', placeholder: 'E-Mail Address'
+    = f.text_field :headline, autofocus: true, value: '', placeholder: 'A bit about yourself...'
+    = f.submit 'Continue'

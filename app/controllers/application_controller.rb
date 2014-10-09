@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   alias_method :logged_in?, :user_signed_in?
   alias_method :signed_in?, :user_signed_in?
 
+  layout :resolve_layout
+
   helper_method :logged_in?
 
   def ensure_signup_complete
@@ -17,5 +19,9 @@ class ApplicationController < ActionController::Base
       redirect_to finish_signup_path(current_user)
     end
   end
-  
+
+  def resolve_layout
+    request.xhr? ? false : 'application'
+  end
+
 end

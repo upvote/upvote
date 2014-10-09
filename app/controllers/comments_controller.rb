@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     end
 
     def set_post
-      @post = Post::Base.find params[:post_id] || params[:id]
+      @post = Post::Base.friendly.find params[:post_id] || params[:id]
     end
 
 end
