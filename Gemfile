@@ -24,13 +24,15 @@ gem 'rspec-rails'
 gem 'devise'
 gem 'friendly_id', github: 'norman/friendly_id'
 
+# this will go into the development group.... later ;)
+gem 'faker'
+
 group :development do
   gem 'quiet_assets'
   gem 'spring'
   gem 'sqlite3'
   gem 'better_errors'
   gem 'awesome_print'
-  gem 'faker'
 end
 
 group :production do
