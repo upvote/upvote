@@ -15,5 +15,4 @@
 //= require turbolinks
 //= require typekit
 //= require vendor/headroom.min
-
-(new Headroom(document.querySelector('header'))).init();
+//= require_tree

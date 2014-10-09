@@ -4,6 +4,11 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @post.comment_threads
+    respond_to do |format|
+      format.html {
+        render layout: !request.xhr?
+      }
+    end
   end
 
   def create
