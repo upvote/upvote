@@ -45,6 +45,9 @@ $comment-author-avatar-size: 40px;
       width: $comment-author-avatar-size;
       height: $comment-author-avatar-size;
       border-radius: $comment-author-avatar-size;
+      border: 1px solid #eee;
+      background-color: #fff;
+      padding: 2px;
     }
   }
 }

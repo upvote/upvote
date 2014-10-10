@@ -16,16 +16,19 @@ openURLInPanel = (urlOrPath) ->
     $('.secondary-content').html data.responseText
   )
 
+hidePanel = ->
+  window.location.hash = ''
+  $('.secondary-content').html loadingHTML
+  $('.whiteout').hide()
+  $('.secondary-content').removeClass 'sliding-in'
+
 $ ->
   $('.secondary-content').html loadingHTML
 
   if document.location.hash.substr(0,2) == '#!'
     openURLInPanel document.location.hash.substr(2)
 
-  $('.whiteout').click ->
-    $('.secondary-content').html loadingHTML
-    $('.whiteout').hide()
-    $('.secondary-content').removeClass 'sliding-in'
+  $('.whiteout').click hidePanel
 
   $('.view-discussion > a,a[data-secondary]').click (e) ->
     e.preventDefault()

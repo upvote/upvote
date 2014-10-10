@@ -1,16 +1,25 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_post, only: [ :show, :edit, :update, :destroy, :outbound, :upvote ]
+  before_action :set_user, only: [ :submitted_by_user, :liked_by_user ]
 
   # GET /posts
   # GET /posts.json
   def index
+    page = params[:page] || 1
+
     @posts = Post::Base.order('created_at DESC').all
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+  end
+
+  def submitted_by_user
+  end
+
+  def liked_by_user
   end
 
   def upvote
@@ -75,6 +84,11 @@ class PostsController < ApplicationController
   end
 
   private
+
+    def set_user
+      @user = User.friendly.find(params[:user_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post::Base.friendly.find(params[:id])
