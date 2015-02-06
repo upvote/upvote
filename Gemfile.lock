@@ -15,6 +15,13 @@ GIT
       awesome_nested_set (>= 3.0)
 
 GIT
+  remote: git://github.com/mbleigh/acts-as-taggable-on.git
+  revision: 4d24051fe15bcc866670d09531123d921586c2f4
+  specs:
+    acts-as-taggable-on (3.4.3)
+      activerecord (>= 3.2, < 5)
+
+GIT
   remote: git://github.com/norman/friendly_id.git
   revision: 7f1a9557ef388cbf9406692aeb45ba074125774f
   specs:
@@ -211,6 +218,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on!
   acts_as_commentable_with_threading!
   acts_as_votable
   awesome_nested_set!

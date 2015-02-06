@@ -11,6 +11,11 @@
 
   = f.text_field :title, placeholder: 'Name Your Post'
   = f.text_field :url, placeholder: 'URL'
+  = f.text_field :tag_list, placeholder: 'Add some tags...', id: 'tags'
   = f.text_field :description, placeholder: 'Tell us about it...'
   br
   = f.submit 'Post it!'
+
+coffee:
+  $ ->
+    $('#tags').tagsInput()

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [ :new, :create, :index ] do
+    collection do
+      get 'tagged/:tag' => :tagged, as: :tagged
+    end
     member do
       post :upvote
       get :outbound

@@ -6,6 +6,11 @@ section.author
 section.post-details
   ul= render 'posts/post', post: @post
 
+section.post-tags
+  /div.header Tagged
+  - @post.tags.each do |tag|
+    = link_to tag, tagged_posts_path(tag:tag.to_s), class: 'tag'
+
 section.upvotes
   h5= pluralize @post.votes_for.size, 'upvote'
   - if @post.votes_for.size == 0
