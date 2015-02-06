@@ -1,6 +1,6 @@
 # Upvote
 
-*Upvote* is a free, open-source, Rails-powered community sharing platform like Product Hunt or Reddit.
+**Upvote** is a free, open-source, Rails-powered community sharing platform like Product Hunt or Reddit.
 
 ## Deployment
 
