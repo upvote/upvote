@@ -1,0 +1,15 @@
+{
+  "name": "Upvote",
+  "description": "Free, open-source, Rails-powered community sharing platform.",
+  "website": "https://github.com/upvote/upvote",
+  "repository": "https://github.com/upvote/upvote",
+  "env": {
+    "APP_SECRET_TOKEN": {
+      "generator": "secret"
+    }
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "success_url": "/posts/new"
+}
