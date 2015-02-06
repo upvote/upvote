@@ -2,6 +2,8 @@
 
 **Upvote** is a free, open-source, Rails-powered community sharing platform like Product Hunt or Reddit.
 
+Want to see what it looks like? Check out a [demo running on Heroku](https://upvote-demo.herokuapp.com/).
+
 ## Deployment
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
