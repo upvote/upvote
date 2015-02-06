@@ -15,6 +15,11 @@ class PostsController < ApplicationController
   def show
   end
 
+  def tagged
+    @posts = Post::Base.tagged_with(params[:tag]).all
+    render :index
+  end
+
   def submitted_by_user
   end
 
@@ -46,7 +51,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post::Base.new post_params.merge(user:current_user)
-    
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_comments_path(@post), notice: 'Post was successfully created.' }
