@@ -3,6 +3,8 @@ h3.no-posts {
   margin-top: 15%;
 }
 
+$vote_container_size: 45px;
+$vote_container_margin: 12px;
 
 li.post {
   .submission, .view-discussion {
@@ -22,7 +24,18 @@ li.post {
     font-weight: bold;
     color: #da552f;
     display: block;
+    margin-bottom: 4px;
   }
+
+  .description, .post-tags {
+    margin-left: $vote_container_size + $vote_container_margin;
+  }
+
+  .post-tags {
+    margin-top: 4px;
+    font-size: 0.8em;
+  }
+
   .description {
     color: #888;
   }
@@ -33,6 +46,6 @@ li.post {
     text-align: center;
     width: 45px;
     color: #888;
-    margin-right: 12px;
+    margin-right: $vote_container_margin;
   }
 }

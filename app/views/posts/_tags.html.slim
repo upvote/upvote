@@ -1,0 +1,4 @@
+- if post.tags.any?
+  section.post-tags
+    - post.tags.each do |tag|
+      = link_to tag, tagged_posts_path(tag:tag.to_s), class: 'tag'

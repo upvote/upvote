@@ -1,16 +1,13 @@
 section.author
-  => "Posted by #{content_tag :strong, @post.user.name}"
+  | Posted by
+  strong=<> @post.user.name
   | about
   span.post-age=< "#{distance_of_time_in_words_to_now @post.created_at} ago"
 
 section.post-details
   ul= render 'posts/post', post: @post
 
-- if @post.tags.any?
-  section.post-tags
-    /div.header Tagged
-    - @post.tags.each do |tag|
-      = link_to tag, tagged_posts_path(tag:tag.to_s), class: 'tag'
+= render 'posts/tags', post: @post
 
 section.upvotes
   h5= pluralize @post.votes_for.size, 'upvote'
