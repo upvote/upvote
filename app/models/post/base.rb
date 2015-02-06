@@ -3,6 +3,12 @@ module Post
     extend FriendlyId
     friendly_id :title, use: :slugged
 
+    validate :acceptable?
+
+    def acceptable?
+      self.class.acceptable? url
+    end
+
     self.table_name = :posts
 
     acts_as_taggable
@@ -16,5 +22,10 @@ module Post
 
     acts_as_votable
     acts_as_commentable
+
+    def self.acceptable?
+      false
+    end
+
   end
 end
