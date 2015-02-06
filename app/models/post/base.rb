@@ -5,6 +5,8 @@ module Post
 
     self.table_name = :posts
 
+    acts_as_taggable
+
     belongs_to :user
 
     validates :title, presence: true

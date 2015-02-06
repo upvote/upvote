@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009033453) do
+ActiveRecord::Schema.define(version: 20150206061412) do
 
   create_table "authorizations", force: true do |t|
     t.integer  "user_id",    null: false
@@ -43,18 +43,50 @@ ActiveRecord::Schema.define(version: 20141009033453) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "post_clicks", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_clicks", ["post_id"], name: "index_post_clicks_on_post_id"
+  add_index "post_clicks", ["user_id"], name: "index_post_clicks_on_user_id"
+
   create_table "posts", force: true do |t|
-    t.string   "title",                              null: false
-    t.integer  "user_id",                            null: false
-    t.string   "type",        default: "Post::Base", null: false
+    t.string   "title",                               null: false
+    t.integer  "user_id",                             null: false
+    t.string   "type",         default: "Post::Base", null: false
     t.text     "description"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.integer  "clicks_count", default: 0,            null: false
   end
 
+  add_index "posts", ["clicks_count"], name: "index_posts_on_clicks_count"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", force: true do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",              default: "", null: false

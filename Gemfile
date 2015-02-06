@@ -23,6 +23,7 @@ gem 'neat'
 gem 'rspec-rails'
 gem 'devise'
 gem 'friendly_id', github: 'norman/friendly_id'
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 # this will go into the development group.... later ;)
 gem 'faker'
