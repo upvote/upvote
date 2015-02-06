@@ -6,6 +6,12 @@
   "env": {
     "APP_SECRET_TOKEN": {
       "generator": "secret"
+    },
+    "TWITTER_API_KEY": {
+      "description": "Twitter OAuth API Key. See https://apps.twitter.com/ to create one."
+    },
+    "TWITTER_API_SECRET": {
+      "description": "Twitter OAuth API Secret."
     }
   },
   "scripts": {
