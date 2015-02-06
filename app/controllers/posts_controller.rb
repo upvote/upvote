@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     page = params[:page] || 1
-
     @posts = Post::Base.order('created_at DESC').all
   end
 
@@ -30,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   def outbound
-    # do something here, like track it
+    @post.clicks.create! user: current_user
     redirect_to @post.url
   end
 

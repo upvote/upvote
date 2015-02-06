@@ -4,13 +4,15 @@ class User < ActiveRecord::Base
   devise :trackable, :omniauthable, :omniauth_providers => [ :twitter ]
 
   has_many :authorizations
+  has_many :clicks, class_name: 'PostClick'
+  has_many :posts
 
   TEMP_EMAIL_PREFIX = 'change@me'
-  TEMP_EMAIL_REGEX = /\Achange@me/
+  TEMP_EMAIL_REGEX  = /\A#{TEMP_EMAIL_PREFIX}/
 
   validates :email, format: { without: TEMP_EMAIL_REGEX }, on: :update
   validates :headline, presence: true, on: :update
-  validates :name, presence: true
+  validates :name,     presence: true
 
   serialize :meta, JSON
 
@@ -49,9 +51,7 @@ class User < ActiveRecord::Base
           name: auth.extra.raw_info.name,
           avatar: auth.extra.raw_info.profile_image_url_https, # use secure URLs
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          meta: auth.extra.raw_info.to_h
-        }
-
+          meta: auth.extra.raw_info.to_h }
         user = User.new(user_attrs)
         # user.skip_confirmation!
         user.save!
