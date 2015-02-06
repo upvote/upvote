@@ -1,1 +1,4 @@
-ul= render partial: 'posts/post', collection: @posts
+- if @posts.any?
+  ul= render partial: 'posts/post', collection: @posts
+- else
+  h3.no-posts There doesn't seem to be anything here.
