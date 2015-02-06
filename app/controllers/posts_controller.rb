@@ -21,6 +21,8 @@ class PostsController < ApplicationController
   end
 
   def submitted_by_user
+    @posts = Post::Base.where(user:@user)
+    render :index
   end
 
   def liked_by_user
