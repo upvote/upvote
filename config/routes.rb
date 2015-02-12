@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/login" => "pages#login", as: :login
 
-  resources :posts, only: [ :new, :create, :index ] do
+  resources :posts, only: [:new, :create, :index] do
     collection do
       get "tagged/:tag" => :tagged, as: :tagged
     end
@@ -18,14 +18,14 @@ Rails.application.routes.draw do
       post :upvote
       get :outbound
     end
-    resources :comments, path: "discussion", only: [ :index, :create ]
+    resources :comments, path: "discussion", only: [:index, :create]
   end
 
-  resource :user, as: :account, path: :account, only: [ :edit, :update ]
+  resource :user, as: :account, path: :account, only: [:edit, :update]
 
   resources :users, only: [] do
     member do
-      match :finish_signup, via: [ :get, :patch ]
+      match :finish_signup, via: [:get, :patch]
     end
     resources :posts, only: [] do
       collection do

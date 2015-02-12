@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
 
-  devise :trackable, :omniauthable, omniauth_providers: [:twitter,:github]
+  devise :trackable, :omniauthable, omniauth_providers: [:twitter, :github]
 
   has_many :authorizations
   has_many :clicks, class_name: 'PostClick'
