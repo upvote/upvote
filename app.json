@@ -14,14 +14,21 @@
       "description": "Twitter OAuth API Secret."
     },
     "GITHUB_CLIENT_ID": {
-      "description:": "GitHub Application Client ID. Se https://github.com/settings/applications to create one.",
+      "description:": "GitHub Application Client ID. See https://github.com/settings/applications to create one.",
       "required": false
     },
     "GITHUB_CLIENT_SECRET": {
       "description:": "GitHub Application Secret Key",
       "required": false
+    },
+    "FACEBOOK_APP_ID": {
+      "description:": "Facebook App ID. See https://developers.facebook.com/apps/ to create one.",
+      "required": false
+    },
+    "FACEBOOK_APP_SECRET": {
+      "description:": "Facebook App Secret Key",
+      "required": false
     }
-
   },
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"

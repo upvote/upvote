@@ -13,6 +13,7 @@ gem 'puma'
 
 gem 'omniauth-twitter'
 gem 'omniauth-github'
+gem 'omniauth-facebook'
 
 gem 'typekit-rails'
 gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set'
