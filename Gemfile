@@ -24,7 +24,7 @@ gem 'refills'
 gem 'bitters'
 gem 'neat'
 gem 'rspec-rails'
-
+gem 'gravatar_image_tag'
 gem 'devise',              github: 'plataformatec/devise'
 gem 'friendly_id',         github: 'norman/friendly_id'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'

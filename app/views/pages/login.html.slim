@@ -1,6 +1,10 @@
-h1 Log In!
-h2 Choose your favorite provider.
-
-- if Devise.mappings[:user].omniauthable?
-  -  Devise.mappings[:user].to.omniauth_providers.each do |provider|
-    = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(Devise.mappings[:user].name, provider)
+center
+  h1 Log In!
+  br
+  h4 Choose your favorite provider:
+  br
+  - if Devise.mappings[:user].omniauthable?
+    -  Devise.mappings[:user].to.omniauth_providers.each do |provider|
+      - url = omniauth_authorize_path(Devise.mappings[:user].name, provider)
+      - button_label = "#{icon provider} Sign in with #{provider.to_s.titleize}".html_safe
+      = link_to button_label, url, class: 'login-provider'

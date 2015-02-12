@@ -234,13 +234,14 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  config.omniauth :twitter, Rails.application.secrets.twitter_api_key, Rails.application.secrets.twitter_api_secret
+  supported_omniauth_providers = {
+    twitter: [ :twitter_api_key, :twitter_api_secret ],
+    github: [ :github_app_id, :github_app_secret, { scope: 'user,user:email' } ]
+  }
 
-  if Rails.application.secrets.github_app_id.present?
-    config.omniauth :github,
-      Rails.application.secrets.github_app_id,
-      Rails.application.secrets.github_app_secret,
-      scope: 'user'
+  supported_omniauth_providers.each_pair do |provider,args|
+    args = args.map { |key| key.is_a?(Symbol) ? Rails.application.secrets.send(key) : key }.compact
+    config.omniauth provider, *args unless args.empty?
   end
 
   # ==> Warden configuration
