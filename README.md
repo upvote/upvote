@@ -2,7 +2,7 @@
 
 [![Code Climate](https://codeclimate.com/github/upvote/upvote/badges/gpa.svg)](https://codeclimate.com/github/upvote/upvote)
 
-[![Hakiri](https://hakiri.io/github/upvote/upvote/master/shield)](https://hakiri.io/github/upvote/upvote/master)
+[![Hakiri](https://hakiri.io/github/upvote/upvote/master.svg)](https://hakiri.io/github/upvote/upvote/master/shield)
 
 **Upvote** is a free, open-source, Rails-powered community sharing platform like Product Hunt or Reddit.
 
