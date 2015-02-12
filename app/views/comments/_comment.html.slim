@@ -4,7 +4,7 @@
     .info-wrapper
       h2= comment.user.name
       small.user-handle
-        = comment.user.twitter_handle if comment.user.twitter_handle.present?
+        = handle_for_user(comment.user)
         span.age=< "about #{distance_of_time_in_words_to_now comment.created_at} ago"
   .comment-body
     = comment.body

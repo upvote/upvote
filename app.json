@@ -12,7 +12,16 @@
     },
     "TWITTER_API_SECRET": {
       "description": "Twitter OAuth API Secret."
+    },
+    "GITHUB_CLIENT_ID": {
+      "description:": "GitHub Application Client ID. Se https://github.com/settings/applications to create one.",
+      "required": false
+    },
+    "GITHUB_CLIENT_SECRET": {
+      "description:": "GitHub Application Secret Key",
+      "required": false
     }
+
   },
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
