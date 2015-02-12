@@ -9,7 +9,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
+
 gem 'omniauth-twitter'
+gem 'omniauth-github'
+
 gem 'typekit-rails'
 gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set'
 gem 'acts_as_commentable_with_threading', github: 'elight/acts_as_commentable_with_threading'
@@ -21,8 +24,9 @@ gem 'refills'
 gem 'bitters'
 gem 'neat'
 gem 'rspec-rails'
-gem 'devise'
-gem 'friendly_id', github: 'norman/friendly_id'
+
+gem 'devise',              github: 'plataformatec/devise'
+gem 'friendly_id',         github: 'norman/friendly_id'
 gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 # this will go into the development group.... later ;)

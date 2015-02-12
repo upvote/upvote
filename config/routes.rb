@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     delete '/logout' => 'users/omniauth_callbacks#log_out'
   end
 
+  get '/login' => 'pages#login', as: :login
+
   resources :posts, only: [ :new, :create, :index ] do
     collection do
       get 'tagged/:tag' => :tagged, as: :tagged
