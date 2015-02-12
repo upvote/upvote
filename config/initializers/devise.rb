@@ -1,3 +1,21 @@
+secrets = Rails.application.secrets
+
+supported_omniauth_providers = {
+  twitter: [:twitter_api_key, :twitter_api_secret],
+  facebook: [:facebook_app_id, :facebook_app_secret],
+  github: [
+    :github_app_id,
+    :github_app_secret,
+    { scope: "user,user:email" }
+  ]
+}
+
+CONFIGURED_OMNIAUTH_PROVIDERS = supported_omniauth_providers.inject([]) do |m,i|
+  creds =  i.last.first(2).map { |key| secrets.send(key) }.compact
+  m << i.first if creds.length == 2
+  m
+end.freeze
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -234,19 +252,8 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  supported_omniauth_providers = {
-    twitter: [:twitter_api_key, :twitter_api_secret],
-    facebook: [:facebook_app_id, :facebook_app_secret],
-    github: [
-      :github_app_id,
-      :github_app_secret,
-      { scope: "user,user:email" }
-    ]
-  }
-
-  secrets = Rails.application.secrets
-  supported_omniauth_providers.each_pair do |provider,args|
-    args = args.map do |key|
+  CONFIGURED_OMNIAUTH_PROVIDERS.each do |provider|
+    args = supported_omniauth_providers[provider].map do |key|
       key.is_a?(Symbol) ? secrets.send(key) : key
     end.compact
     config.omniauth provider, *args unless args.empty?
