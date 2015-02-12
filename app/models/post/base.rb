@@ -8,7 +8,7 @@ module Post
     acts_as_taggable
 
     belongs_to :user
-    has_many :clicks, class_name: 'PostClick'
+    has_many :clicks, class_name: 'PostClick', foreign_key: :post_id
 
     validates :title, presence: true
     validates :user_id, presence: true

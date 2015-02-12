@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post::Base.new post_params.merge(user:current_user)
+    @post = Post::Link.new post_params.merge(user:current_user)
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_comments_path(@post), notice: 'Post was successfully created.' }
