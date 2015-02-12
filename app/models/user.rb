@@ -42,6 +42,22 @@ class User < ActiveRecord::Base
   #   nil
   # end
 
+  def self.create_from_auth!(auth)
+    # Get the existing user by email if the provider gives us a verified email.
+    # If no verified email was provided we assign a temporary email and ask the
+    # user to verify it on the next step via UsersController.finish_signup
+    # email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+    email = auth.info.email # if email_is_verified
+    user  = User.where(email: email).first if email
+    image = auth.extra.raw_info.profile_image_url_https || auth.info.image
+
+    create!({
+        name: auth.extra.raw_info.name,
+      avatar: image,
+       email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+        meta: auth.extra.raw_info.to_h })
+  end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)0
     # Get the identity and user if they exist
     identity = Authorization.find_for_oauth(auth)
@@ -53,35 +69,10 @@ class User < ActiveRecord::Base
     user = signed_in_resource ? signed_in_resource : identity.user
 
     # Create the user if needed
-    if user.nil?
-
-      # Get the existing user by email if the provider gives us a verified email.
-      # If no verified email was provided we assign a temporary email and ask the
-      # user to verify it on the next step via UsersController.finish_signup
-      # email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
-
-      email = auth.info.email # if email_is_verified
-      user  = User.where(email: email).first if email
-      image = auth.extra.raw_info.profile_image_url_https || auth.info.image
-
-      # Create the user if it's a new registration
-      if user.nil?
-        user_attrs = {
-          name: auth.extra.raw_info.name,
-          avatar: image,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          meta: auth.extra.raw_info.to_h }
-        user = User.new(user_attrs)
-        # user.skip_confirmation!
-        user.save!
-      end
-    end
+    user = create_from_auth!(auth) unless user
 
     # Associate the identity with the user if needed
-    if identity.user != user
-      identity.user = user
-      identity.save!
-    end
+    identity.update_attribute :user, user if identity.user != user
 
     user
   end
