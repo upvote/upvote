@@ -59,9 +59,9 @@ class User < ActiveRecord::Base
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
       # email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
-      
+
       email = auth.info.email # if email_is_verified
-      user  = User.where(email:email).first if email
+      user  = User.where(email: email).first if email
       image = auth.extra.raw_info.profile_image_url_https || auth.info.image
 
       # Create the user if it's a new registration
