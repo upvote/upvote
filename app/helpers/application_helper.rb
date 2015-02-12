@@ -4,7 +4,7 @@ module ApplicationHelper
     auth     = user.first_authorization
     provider = auth.provider
     link_to submitted_user_posts_path(user) do
-      icon(provider) + ' ' + icon(:'angle-right') + ' ' +
+      icon(provider) + " " + icon(:'angle-right') + " " +
       content_tag(:span, user.handle)
     end
   end

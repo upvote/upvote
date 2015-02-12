@@ -236,7 +236,11 @@ Devise.setup do |config|
 
   supported_omniauth_providers = {
     twitter: [ :twitter_api_key, :twitter_api_secret ],
-    github: [ :github_app_id, :github_app_secret, { scope: 'user,user:email' } ]
+    github: [
+      :github_app_id,
+      :github_app_secret,
+      { scope: 'user,user:email' }
+    ]
   }
 
   supported_omniauth_providers.each_pair do |provider,args|

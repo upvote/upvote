@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
 
-  devise :trackable, :omniauthable, :omniauth_providers => [ :twitter, :github ]
+  devise :trackable, :omniauthable, omniauth_providers: [:twitter,:github]
 
   has_many :authorizations
   has_many :clicks, class_name: 'PostClick'
@@ -42,13 +42,7 @@ class User < ActiveRecord::Base
   #   nil
   # end
 
-  def self.find_for_oauth(auth, signed_in_resource = nil)
-    puts "~~~~~~~~~~~~~~~"
-    ap auth
-    puts "~~~~~~~~~~~~~~~"
-
-
-
+  def self.find_for_oauth(auth, signed_in_resource = nil)0
     # Get the identity and user if they exist
     identity = Authorization.find_for_oauth(auth)
 
@@ -64,10 +58,11 @@ class User < ActiveRecord::Base
       # Get the existing user by email if the provider gives us a verified email.
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
-      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
-      email             = auth.info.email # if email_is_verified
-      user              = User.where(:email => email).first if email
-      image             = auth.extra.raw_info.profile_image_url_https || auth.info.image
+      # email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+      
+      email = auth.info.email # if email_is_verified
+      user  = User.where(email:email).first if email
+      image = auth.extra.raw_info.profile_image_url_https || auth.info.image
 
       # Create the user if it's a new registration
       if user.nil?
