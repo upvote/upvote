@@ -1,6 +1,6 @@
 # Upvote
 
-[![Code Climate](https://codeclimate.com/github/upvote/upvote/badges/gpa.svg)](https://codeclimate.com/github/upvote/upvote) [![Hakiri](https://hakiri.io/github/upvote/upvote/master.svg)](https://hakiri.io/github/upvote/upvote/master/shield)
+[![Code Climate](https://codeclimate.com/github/upvote/upvote/badges/gpa.svg)](https://codeclimate.com/github/upvote/upvote) [![Dependency Status](https://gemnasium.com/upvote/upvote.svg)](https://gemnasium.com/upvote/upvote) [![Hakiri](https://hakiri.io/github/upvote/upvote/master.svg)](https://hakiri.io/github/upvote/upvote/master/shield)
 
 **Upvote** is a free, open-source, Rails-powered community sharing platform like Product Hunt or Reddit.
 
