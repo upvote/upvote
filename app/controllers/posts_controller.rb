@@ -1,23 +1,22 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :set_post, only: [ :show, :edit, :update, :destroy, :outbound, :upvote ]
-  before_action :set_user, only: [ :submitted_by_user, :liked_by_user ]
+  before_action :set_date, only: [:index]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :outbound, :upvote]
+  before_action :set_user, only: [:submitted_by_user, :liked_by_user]
 
   # GET /posts
   # GET /posts.json
   def index
-    page = params[:page] || 1
-    @posts = Post::Base.order('created_at DESC').all
+    page   = params[:page] || 1
+    @posts = Post::Base.order('created_at DESC')
+    @posts = @posts.where("posts.created_at > ? AND posts.created_at < ?", @date, @date+1.day) if @date
+    @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
+    @posts = @posts.group_by { |p| p.created_at.to_date }
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-  end
-
-  def tagged
-    @posts = Post::Base.tagged_with(params[:tag]).all
-    render :index
   end
 
   def submitted_by_user
@@ -61,6 +60,11 @@ class PostsController < ApplicationController
   end
 
   private
+
+    def set_date
+      return unless (params[:year] && params[:month] && params[:day])
+      @date = Date.strptime("#{params[:year]}-#{params[:month]}-#{params[:day]}")
+    end
 
     def handle_post_error(format,action=:edit)
       format.html { render action }

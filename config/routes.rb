@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   resources :posts, only: [:new, :create, :index] do
     collection do
-      get "tagged/:tag" => :tagged, as: :tagged
+      get ":year/:month/:day" => :index, as: :date
+      get "tagged/:tag"       => :index, as: :tagged
     end
     member do
       post :upvote
