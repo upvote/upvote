@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/collectiveidea/awesome_nested_set.git
-  revision: f97296450fd07013904b4ebcc41dbee6f3beda73
+  revision: 3838ceeb1ec2e3e9ac60b6707a981d6b37bb7cab
   specs:
-    awesome_nested_set (3.0.1)
+    awesome_nested_set (3.0.2)
       activerecord (>= 4.0.0, < 5)
 
 GIT
@@ -16,21 +16,21 @@ GIT
 
 GIT
   remote: git://github.com/mbleigh/acts-as-taggable-on.git
-  revision: 4d24051fe15bcc866670d09531123d921586c2f4
+  revision: a13c7a20eaa9a6016850750b6677b04c3430affd
   specs:
-    acts-as-taggable-on (3.4.3)
+    acts-as-taggable-on (3.4.4)
       activerecord (>= 3.2, < 5)
 
 GIT
   remote: git://github.com/norman/friendly_id.git
-  revision: 7f1a9557ef388cbf9406692aeb45ba074125774f
+  revision: b30eb85d37498ef3632bb98b96a1b589cb9eb909
   specs:
-    friendly_id (5.0.4)
+    friendly_id (5.1.0)
       activerecord (>= 4.0.0)
 
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: a2e0e9c187dd58618e234c2a790d6723d5792e74
+  revision: c19f1f27cecd7024df0ff8b4ace400d665dd9576
   specs:
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 72ffeb9fe58c46bd556a85bed5214d8f482737a5
+  revision: 0d776b8a507c1ccbbb0f6daf9ea8a9e155b263b5
   branch: 4-2-stable
   specs:
     actionmailer (4.2.0)
@@ -133,7 +133,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     font-awesome-sass (4.3.1)
       sass (~> 3.2)
-    globalid (0.3.2)
+    globalid (0.3.3)
       activesupport (>= 4.1.0)
     gravatar_image_tag (1.2.0)
     hashie (3.4.0)
@@ -212,7 +212,7 @@ GEM
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
     rake (10.4.2)
-    rdoc (4.1.2)
+    rdoc (4.2.0)
       json (~> 1.4)
     refills (0.1.0)
     responders (2.1.0)

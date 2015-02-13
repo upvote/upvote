@@ -1,4 +1,9 @@
 - if @posts.any?
-  ul= render partial: 'posts/post', collection: @posts
+  - @posts.keys.each do |date|
+    div.date
+      h4.header
+        = date.strftime('%B %d, %Y')
+        .permalink= link_to "#{icon :'external-link'} Permalink".html_safe, date_posts_path(month:date.month,day:date.day,year:date.year)
+      ul= render partial: 'posts/post', collection: @posts[date]
 - else
   h3.no-posts There doesn't seem to be anything here.

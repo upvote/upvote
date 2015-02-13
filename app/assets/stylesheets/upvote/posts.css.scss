@@ -6,6 +6,25 @@ h3.no-posts {
 $vote_container_size: 45px;
 $vote_container_margin: 12px;
 
+div.date {
+  @include clearfix;
+  margin-bottom: 12px;
+  .header {
+    margin-bottom: 12px;
+    .permalink {
+      margin-left: 12px;
+      display: inline-block;
+      font-size: 10px;
+      text-transform: capitalize;
+      line-height: 30px;
+      color: rgba($blue,0.25);
+      &:hover {
+        color: rgba($blue,1);
+      }
+    }
+  }
+}
+
 li.post {
   .submission, .view-discussion {
     margin-bottom: 18px;
