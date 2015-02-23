@@ -114,7 +114,7 @@ GEM
       bourbon (>= 3.2)
       sass (>= 3.2)
       thor
-    bourbon (4.2.0)
+    bourbon (4.2.1)
       sass (~> 3.4)
       thor
     builder (3.2.2)
@@ -142,7 +142,7 @@ GEM
     hashie (3.4.0)
     hike (1.2.3)
     i18n (0.7.0)
-    jbuilder (2.2.7)
+    jbuilder (2.2.8)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
     jquery-rails (4.0.3)
@@ -176,7 +176,7 @@ GEM
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
-    omniauth-facebook (2.0.0)
+    omniauth-facebook (2.0.1)
       omniauth-oauth2 (~> 1.2)
     omniauth-github (1.1.2)
       omniauth (~> 1.0)
