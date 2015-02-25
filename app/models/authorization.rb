@@ -10,5 +10,4 @@ class Authorization < ActiveRecord::Base
     authorization.handle = auth.info.nickname
     authorization
   end
-
 end

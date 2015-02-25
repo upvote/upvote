@@ -1,13 +1,11 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!, only: :create
-  before_filter :set_post
+  before_action :authenticate_user!, only: :create
+  before_action :set_post
 
   def index
     @comments = @post.comment_threads
     respond_to do |format|
-      format.html {
-        render layout: !request.xhr?
-      }
+      format.html { render layout: !request.xhr? }
     end
   end
 
@@ -18,12 +16,11 @@ class CommentsController < ApplicationController
 
   protected
 
-    def comment_params
-      params.require(:comment).permit(:body)
-    end
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 
-    def set_post
-      @post = Post::Base.friendly.find params[:post_id] || params[:id]
-    end
-
+  def set_post
+    @post = Post::Base.friendly.find params[:post_id] || params[:id]
+  end
 end

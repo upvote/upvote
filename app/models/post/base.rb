@@ -16,5 +16,7 @@ module Post
 
     acts_as_votable
     acts_as_commentable
+
+    scope :on_date, ->(date) { where 'posts.created_at > ? AND posts.created_at < ?', date, date + 1.day }
   end
 end

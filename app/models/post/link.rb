@@ -5,10 +5,9 @@ module Post
 
     def url_is_valid
       uri = URI.parse(url)
-      raise 'invalid URL' unless ( uri.scheme == 'https' || uri.scheme == 'http' )
-    rescue => e
+      fail 'invalid URL' unless uri.scheme == 'https' || uri.scheme == 'http'
+    rescue
       errors.add :url, 'is invalid'
     end
-
   end
 end

@@ -3,16 +3,10 @@ class UsersController < ApplicationController
 
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
-    # authorize! :update, @user
-    if request.patch? && params[:user] #&& params[:user][:email]
-      if @user.update(user_params)
-        # @user.skip_reconfirmation!
-        sign_in(@user, :bypass => true)
-        redirect_to root_path, notice: 'Your profile was successfully updated.'
-      else
-        @show_errors = true
-      end
-    end
+    return unless request.patch? && params[:user]
+    return @show_errors = true unless @user.update(user_params)
+    sign_in @user, bypass: true
+    redirect_to root_path, notice: 'Your profile was successfully updated.'
   end
 
   # GET /users/1/edit
@@ -34,14 +28,14 @@ class UsersController < ApplicationController
   end
 
   private
-  
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email,:headline,:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.friendly.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit :email, :headline, :name
+  end
 end
