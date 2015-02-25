@@ -58,7 +58,7 @@ class User < ActiveRecord::Base
         meta: auth.extra.raw_info.to_h })
   end
 
-  def self.find_for_oauth(auth, signed_in_resource = nil)0
+  def self.find_for_oauth(auth, signed_in_resource = nil)
     # Get the identity and user if they exist
     identity = Authorization.find_for_oauth(auth)
 

@@ -1,26 +1,22 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, except: [:index, :outbound]
   before_action :set_date, only: [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :outbound, :upvote]
   before_action :set_user, only: [:submitted_by_user, :liked_by_user]
 
-  # GET /posts
-  # GET /posts.json
+  # TODO: add pagination and infinite scroll support!
   def index
-    page   = params[:page] || 1
     @posts = Post::Base.order('created_at DESC')
     @posts = @posts.where("posts.created_at > ? AND posts.created_at < ?", @date, @date+1.day) if @date
     @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
     @posts = @posts.group_by { |p| p.created_at.to_date }
   end
 
-  # GET /posts/1
-  # GET /posts/1.json
   def show
   end
 
   def submitted_by_user
-    @posts = Post::Base.where(user:@user)
+    @posts = Post::Base.where user: @user
     render :index
   end
 
@@ -47,7 +43,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post::Link.new post_params.merge(user:current_user)
+    @post = Post::Link.new post_params.merge user: current_user
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_comments_path(@post), notice: 'Post was successfully created.' }
@@ -62,7 +58,7 @@ class PostsController < ApplicationController
   private
 
     def set_date
-      return unless (params[:year] && params[:month] && params[:day])
+      return unless params[:year] && params[:month] && params[:day]
       @date = Date.strptime("#{params[:year]}-#{params[:month]}-#{params[:day]}")
     end
 
