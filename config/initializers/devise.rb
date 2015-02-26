@@ -10,7 +10,7 @@ supported_omniauth_providers = {
   ]
 }
 
-CONFIGURED_OMNIAUTH_PROVIDERS = supported_omniauth_providers.each_with_object([]) do |m, i|
+CONFIGURED_OMNIAUTH_PROVIDERS = supported_omniauth_providers.each_with_object([]) do |i, m|
   creds =  i.last.first(2).map { |key| secrets.send(key) }.compact
   m << i.first if creds.length == 2
   m
