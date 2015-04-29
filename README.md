@@ -1,5 +1,7 @@
 # Upvote
 
+[![Join the chat at https://gitter.im/upvote/upvote](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/upvote/upvote?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Code Climate](https://codeclimate.com/github/upvote/upvote/badges/gpa.svg)](https://codeclimate.com/github/upvote/upvote)
 [![Travis CI](https://travis-ci.org/upvote/upvote.svg)](https://travis-ci.org/upvote/upvote)
 [![Hakiri](https://hakiri.io/github/upvote/upvote/master.svg)](https://hakiri.io/github/upvote/upvote/master/shield)
