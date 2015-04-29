@@ -36,6 +36,7 @@ gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 gem 'faker'
 
 gem 'rspec-rails', group: [:development, :test]
+gem 'coveralls', require: false
 
 group :test do
   gem 'simplecov', require: false
