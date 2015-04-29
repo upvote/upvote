@@ -14,25 +14,25 @@
 ActiveRecord::Schema.define(version: 20150206061412) do
 
   create_table "authorizations", force: :cascade do |t|
-    t.integer  "user_id",                null: false
-    t.string   "provider",   limit: 255, null: false
-    t.string   "uid",        limit: 255, null: false
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
     t.text     "meta"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "handle",     limit: 255
+    t.string   "handle"
   end
 
   add_index "authorizations", ["provider", "uid"], name: "index_authorizations_on_provider_and_uid", unique: true
   add_index "authorizations", ["provider", "user_id"], name: "index_authorizations_on_provider_and_user_id", unique: true
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "commentable_id",               default: 0
-    t.string   "commentable_type", limit: 255
-    t.string   "title",            limit: 255
+    t.integer  "commentable_id",   default: 0
+    t.string   "commentable_type"
+    t.string   "title"
     t.text     "body"
-    t.string   "subject",          limit: 255
-    t.integer  "user_id",                      default: 0, null: false
+    t.string   "subject"
+    t.integer  "user_id",          default: 0, null: false
     t.integer  "parent_id"
     t.integer  "lft"
     t.integer  "rgt"
@@ -54,15 +54,15 @@ ActiveRecord::Schema.define(version: 20150206061412) do
   add_index "post_clicks", ["user_id"], name: "index_post_clicks_on_user_id"
 
   create_table "posts", force: :cascade do |t|
-    t.string   "title",        limit: 255,                        null: false
-    t.integer  "user_id",                                         null: false
-    t.string   "type",         limit: 255, default: "Post::Base", null: false
+    t.string   "title",                               null: false
+    t.integer  "user_id",                             null: false
+    t.string   "type",         default: "Post::Base", null: false
     t.text     "description"
-    t.string   "url",          limit: 255
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",         limit: 255
-    t.integer  "clicks_count",             default: 0,            null: false
+    t.string   "slug"
+    t.integer  "clicks_count", default: 0,            null: false
   end
 
   add_index "posts", ["clicks_count"], name: "index_posts_on_clicks_count"
@@ -71,9 +71,9 @@ ActiveRecord::Schema.define(version: 20150206061412) do
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type", limit: 255
+    t.string   "taggable_type"
     t.integer  "tagger_id"
-    t.string   "tagger_type",   limit: 255
+    t.string   "tagger_type"
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
@@ -82,37 +82,37 @@ ActiveRecord::Schema.define(version: 20150206061412) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name",           limit: 255
-    t.integer "taggings_count",             default: 0
+    t.string  "name"
+    t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",              limit: 255, default: "", null: false
-    t.integer  "sign_in_count",                  default: 0,  null: false
+    t.string   "email",              default: "", null: false
+    t.integer  "sign_in_count",      default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip", limit: 255
-    t.string   "last_sign_in_ip",    limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.text     "meta"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "headline",           limit: 255, default: "", null: false
-    t.string   "name",               limit: 255, default: "", null: false
-    t.string   "slug",               limit: 255
-    t.string   "avatar",             limit: 255
+    t.string   "headline",           default: "", null: false
+    t.string   "name",               default: "", null: false
+    t.string   "slug"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
 
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
-    t.string   "votable_type", limit: 255
+    t.string   "votable_type"
     t.integer  "voter_id"
-    t.string   "voter_type",   limit: 255
+    t.string   "voter_type"
     t.boolean  "vote_flag"
-    t.string   "vote_scope",   limit: 255
+    t.string   "vote_scope"
     t.integer  "vote_weight"
     t.datetime "created_at"
     t.datetime "updated_at"

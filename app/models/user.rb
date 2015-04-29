@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :authorizations
   has_many :clicks, class_name: 'PostClick'
-  has_many :posts
+  has_many :posts, class_name: 'Post::Base'
 
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX  = /\A#{TEMP_EMAIL_PREFIX}/

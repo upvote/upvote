@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :outbound]
+  before_action :authenticate_user!, except: [:index, :outbound, :submitted_by_user, :liked_by_user]
   before_action :set_date, only: [:index]
   before_action :set_post, only: [:show, :edit, :update, :destroy, :outbound, :upvote]
   before_action :set_user, only: [:submitted_by_user, :liked_by_user]
@@ -7,12 +7,16 @@ class PostsController < ApplicationController
   # TODO: add pagination and infinite scroll support!
   def index
     @posts = Post::Base.order('created_at DESC')
-    @posts = @posts.on_date(@date) if @date
-    @posts = @posts.tagged_with(params[:tag]) if params[:tag].present?
-    @posts = @posts.group_by { |p| p.created_at.to_date }
-  end
 
-  def show
+    if @date
+      @posts = @posts.on_date(@date)
+    end
+
+    if params[:tag].present?
+      @posts = @posts.tagged_with(params[:tag])
+    end
+
+    @posts = @posts.group_by { |p| p.created_at.to_date }
   end
 
   def submitted_by_user
@@ -21,10 +25,12 @@ class PostsController < ApplicationController
   end
 
   def liked_by_user
+    @posts = @user.find_up_voted_items
+    render :index
   end
 
-  def upvotes
-    @post.liked_by current_user
+  def upvote
+    current_user.up_votes(@post)
     respond_to do |format|
       format.html { redirect_to posts_path, notice: 'Successfully voted!' }
     end
