@@ -34,7 +34,6 @@ gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 # this will go into the development group.... later ;)
 gem 'faker'
-
 gem 'rspec-rails', group: [:development, :test]
 gem 'coveralls', require: false
 
@@ -42,7 +41,6 @@ group :test do
   gem 'simplecov', require: false
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'faker'
 end
 
 group :development do
