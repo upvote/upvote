@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
-gem 'sprockets', '~>2.12.3'
+gem 'sprockets'
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails'
@@ -36,6 +36,13 @@ gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 gem 'faker'
 
 gem 'rspec-rails', group: [:development, :test]
+
+group :test do
+  gem 'simplecov', require: false
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'faker'
+end
 
 group :development do
   gem 'quiet_assets'
