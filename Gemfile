@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+ruby '2.2.1' # get ready for Rails 5 ..
 
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'sprockets', '~>2.12.3'
