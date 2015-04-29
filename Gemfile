@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
+
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'sprockets', '~>2.12.3'
 gem 'sass-rails'
@@ -16,7 +18,7 @@ gem 'omniauth-github'
 gem 'omniauth-facebook'
 
 gem 'typekit-rails'
-gem 'awesome_nested_set', github: 'collectiveidea/awesome_nested_set'
+gem 'awesome_nested_set',                 github: 'collectiveidea/awesome_nested_set'
 gem 'acts_as_commentable_with_threading', github: 'elight/acts_as_commentable_with_threading'
 gem 'acts_as_votable'
 gem 'slim'
