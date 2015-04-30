@@ -55,7 +55,7 @@ class PostsController < ApplicationController
         format.html { redirect_to post_comments_path(@post), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: post_path(@post) }
       else
-        handle_post_error format, :create
+        handle_post_error format, :new
       end
     end
   end

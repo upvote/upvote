@@ -1,10 +1,10 @@
 # Upvote
 
 [![Code Climate](https://codeclimate.com/github/upvote/upvote/badges/gpa.svg)](https://codeclimate.com/github/upvote/upvote)
-[![Travis CI](https://travis-ci.org/upvote/upvote.svg)](https://travis-ci.org/upvote/upvote)
-[![Hakiri](https://hakiri.io/github/upvote/upvote/master.svg)](https://hakiri.io/github/upvote/upvote/master/shield)
-[![Dependency Status](https://gemnasium.com/upvote/upvote.svg)](https://gemnasium.com/upvote/upvote)
-[![Coverage Status](https://coveralls.io/repos/upvote/upvote/badge.svg)](https://coveralls.io/r/upvote/upvote)
+[![Build](https://travis-ci.org/upvote/upvote.svg)](https://travis-ci.org/upvote/upvote)
+[![Coverage](https://coveralls.io/repos/upvote/upvote/badge.svg)](https://coveralls.io/r/upvote/upvote)
+[![Dependencies](https://gemnasium.com/upvote/upvote.svg)](https://gemnasium.com/upvote/upvote)
+[![Security](https://hakiri.io/github/upvote/upvote/master.svg)](https://hakiri.io/github/upvote/upvote/master/shield)
 
 [![Join the chat at https://gitter.im/upvote/upvote](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/upvote/upvote)
 

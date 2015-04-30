@@ -27,9 +27,19 @@ RSpec.describe PostsController, type: :controller do
 
     context 'when logged in' do
       before(:each) { sign_in user }
+
       it 'creates a post object' do
         expect { subject }.to change { Post::Base.count }.by(1)
       end
+
+      context 'with invalid data' do
+        subject { post :create, post: FactoryGirl.attributes_for(:post).except(:title, :url) }
+
+        it 'does not create a post object' do
+          expect { subject }.to_not change { Post::Base.count }
+        end
+      end
+
     end
 
     context 'when logged out' do
@@ -42,6 +52,32 @@ RSpec.describe PostsController, type: :controller do
 
   describe '#index' do
     subject { get :index }
+
+    context 'with a specific tag' do
+      let(:tags) { ['cool', 'lame', 'awesome', 'super cool'] }
+      let(:tag)  { tags.sample }
+
+      it 'assigns @posts to only posts with the specified tag' do
+        post_object.tag_list << tag
+        post_object.save!
+        get :index, tag: tag
+        expect(assigns :posts).to eq(post_object.created_at.to_date => [post_object])
+      end
+
+    end
+
+    context 'with a specific date' do
+      let(:random_date) { (Time.zone.today - rand(5).years - rand(365).days).to_date }
+      let(:date_params) { { year: random_date.year, month: random_date.month, day: random_date.day } }
+
+      it 'assigns @posts to only posts from that date' do
+        num = rand(10) + 3
+        posts = num.times.map { create :post, created_at: random_date.to_time }
+        get :index, date_params
+        expect(assigns :posts).to eq(random_date => posts)
+      end
+
+    end
 
     it 'should assign @posts' do
       subject
