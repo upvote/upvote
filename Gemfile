@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+ruby '2.2.2'
 
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'sprockets'
