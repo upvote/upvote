@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   alias_method :logged_in?, :user_signed_in?
   alias_method :signed_in?, :user_signed_in?
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render text: 'Not Found', status: 404
+  end
+
   layout :resolve_layout
 
   helper_method :logged_in?

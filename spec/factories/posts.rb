@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :post_base, class: Post::Base do
     user
     title { Faker::Lorem.sentence }
+    # comment_threads { build_list :comment, rand(100) }
   end
 
   factory :post, class: Post::Link, parent: :post_base, aliases: [:link_post] do

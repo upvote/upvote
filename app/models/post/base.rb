@@ -5,8 +5,6 @@ module Post
 
     self.table_name = :posts
 
-    acts_as_taggable
-
     belongs_to :user
     has_many :clicks, class_name: 'PostClick', foreign_key: :post_id
 
@@ -16,6 +14,7 @@ module Post
 
     acts_as_votable
     acts_as_commentable
+    acts_as_taggable
 
     scope :on_date, ->(date) { where 'posts.created_at > ? AND posts.created_at < ?', date, date + 1.day }
   end

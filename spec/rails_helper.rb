@@ -8,6 +8,8 @@ require 'rspec/rails'
 require 'simplecov'
 require 'coveralls'
 
+OmniAuth.config.test_mode = true
+
 # SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 SimpleCov.start('rails')
 
