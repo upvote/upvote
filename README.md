@@ -1,9 +1,9 @@
 # Upvote
 
-[![Code Climate](https://codeclimate.com/github/upvote/upvote/badges/gpa.svg)](https://codeclimate.com/github/upvote/upvote)
-[![Build](https://travis-ci.org/upvote/upvote.svg)](https://travis-ci.org/upvote/upvote)
-[![Coverage](https://coveralls.io/repos/upvote/upvote/badge.svg)](https://coveralls.io/r/upvote/upvote)
-[![Dependencies](https://gemnasium.com/upvote/upvote.svg)](https://gemnasium.com/upvote/upvote)
+[![Build Status](https://img.shields.io/travis/upvote/upvote/master.svg?style=flat-square)](https://travis-ci.org/upvote/upvote)
+[![Gemnasium](https://img.shields.io/gemnasium/upvote/upvote.svg?style=flat-square)](https://gemnasium.com/upvote/upvote)
+[![Code Climate](https://img.shields.io/codeclimate/github/upvote/upvote.svg?style=flat-square)](https://codeclimate.com/github/upvote/upvote)
+[![Coverage](https://img.shields.io/coveralls/upvote/upvote.svg?style=flat-square)](https://coveralls.io/r/upvote/upvote)
 [![Security](https://hakiri.io/github/upvote/upvote/master.svg)](https://hakiri.io/github/upvote/upvote/master/shield)
 
 [![Join the chat at https://gitter.im/upvote/upvote](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/upvote/upvote)
