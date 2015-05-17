@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+ruby '2.2.2'
 
 gem 'rails', github: 'rails/rails', branch: '4-2-stable'
 gem 'sprockets'
@@ -38,6 +38,7 @@ gem 'rspec-rails', group: [:development, :test]
 gem 'coveralls', require: false
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'simplecov', require: false
   gem 'factory_girl_rails'
   gem 'database_cleaner'
