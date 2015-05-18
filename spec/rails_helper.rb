@@ -10,8 +10,7 @@ require 'coveralls'
 
 OmniAuth.config.test_mode = true
 
-# SimpleCov.formatter = Coveralls::SimpleCov::Formatter
-SimpleCov.start('rails')
+Coveralls.wear! 'rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
