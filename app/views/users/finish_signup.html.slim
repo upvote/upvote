@@ -16,6 +16,6 @@
         - current_user.errors.full_messages.each do |msg|
           = msg
           br
-    = f.text_field :email, autofocus: true, value: '', placeholder: 'E-Mail Address'
-    = f.text_field :headline, autofocus: true, value: '', placeholder: 'A bit about yourself...'
-    = f.submit 'Continue'
+    = f.text_field :email, autofocus: true, value: '', placeholder:  t('registration.email_placeholder')
+    = f.text_field :headline, value: '', placeholder: t('registration.headline_placeholder')
+    = f.submit t('registration.sign_up')

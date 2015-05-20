@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks'
-  }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   devise_scope :user do
     delete '/logout' => 'users/omniauth_callbacks#log_out'
+    get '/login' => 'devise/sessions#new'
   end
 
-  get '/login' => 'pages#login', as: :login
+  # get '/login' => 'pages#login', as: :login
 
   resources :posts, only: [:new, :create, :index] do
     collection do

@@ -21,3 +21,11 @@
 
 en:
   hello: "Hello world"
+
+  registration:
+    email_placeholder: E-Mail Address
+    headline_placeholder: A bit about yourself...
+    name_placeholder: Your Name
+    password_placeholder: Password
+    password_confirmation_placeholder: Password (agian)
+    sign_up: Sign Up!
