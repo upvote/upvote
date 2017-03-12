@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   def self.email_or_temp_from_auth(auth)
-    auth.info.email ? auth.info.email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com"
+    auth.try(:info).try(:email) ? auth.info.email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com"
   end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
