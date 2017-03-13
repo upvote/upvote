@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   def self.create_from_auth!(auth)
     create! name: auth.extra.raw_info.name,
             avatar: image_from_auth(auth),
-            email: email_or_temp_from_auth(auth.info.email),
+            email: email_or_temp_from_auth(auth),
             meta: auth.extra.raw_info.to_h
   end
 
