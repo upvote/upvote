@@ -34,8 +34,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  ENV['TWITTER_API_KEY'] = "8d1r65RNM2rfAOF66yDhD8Vtz";
-  ENV['TWITTER_API_SECRET'] = "72Vccg13X6dlgv86w5Mvwqdw5npMXQlwgOTMAQpcZzuA2XcmKC";
-  ENV['FACEBOOK_APP_ID'] = "105271440007164";
-  ENV['FACEBOOK_APP_SECRET'] = "3533e301d1514a5759ac597416cbe6c2";
+  ENV['TWITTER_API_KEY'] = '';
+  ENV['TWITTER_API_SECRET'] = '';
+  ENV['FACEBOOK_APP_ID'] = '';
+  ENV['FACEBOOK_APP_SECRET'] = '';
 end
